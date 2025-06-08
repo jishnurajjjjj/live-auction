@@ -75,13 +75,13 @@ This section explains how to set up and run the Live Auction platform built with
 
 ### 📥 Clone the Repository
 
-git clone https://github.com/jishnurajjjjj/live-auction.git
+git clone https://github.com/jishnurajjjjj/live-auction.git,
 cd live-auction
 
 ## Install Dependencies
 
-composer install
-npm install
+composer install,
+npm install,
 npm run build
 
 ## Environment Setup
@@ -90,13 +90,13 @@ cp .env.example .env
 
 ## Then set the following in your .env
 
-BROADCAST_DRIVER=pusher
-PUSHER_APP_ID=2004885
-PUSHER_APP_KEY=8b0f29faee870ef589e9
-PUSHER_APP_SECRET=10548e19664191acc316
-PUSHER_HOST=
-PUSHER_PORT=443
-PUSHER_SCHEME=https
+BROADCAST_DRIVER=pusher,
+PUSHER_APP_ID=2004885,
+PUSHER_APP_KEY=8b0f29faee870ef589e9,
+PUSHER_APP_SECRET=10548e19664191acc316,
+PUSHER_HOST=,
+PUSHER_PORT=443,
+PUSHER_SCHEME=https,
 PUSHER_APP_CLUSTER=ap2
 
 ##  Migrate and Seed Database
