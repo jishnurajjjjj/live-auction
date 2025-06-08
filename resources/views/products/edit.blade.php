@@ -71,11 +71,10 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 $(document).ready(function() {
-    // Set minimum datetime (current time + 5 minutes)
+  
     const now = new Date();
     now.setMinutes(now.getMinutes() + 5);
     
-    // Format to YYYY-MM-DDTHH:MM
     const year = now.getFullYear();
     const month = String(now.getMonth() + 1).padStart(2, '0');
     const day = String(now.getDate()).padStart(2, '0');
@@ -85,16 +84,14 @@ $(document).ready(function() {
     const minDateTime = `${year}-${month}-${day}T${hours}:${minutes}`;
     $('#auction_end_time').attr('min', minDateTime);
 
-    // Form submission handler
     $('#editAuctionForm').on('submit', function(e) {
         e.preventDefault();
         
-        // Reset validation
         $('.is-invalid').removeClass('is-invalid');
         $('.invalid-feedback').text('');
         $('#formMessage').text('');
         
-        // Validate end time
+        
         const endTime = new Date($('#auction_end_time').val());
         if (endTime <= now) {
             $('#auction_end_time').addClass('is-invalid');
@@ -102,7 +99,7 @@ $(document).ready(function() {
             return;
         }
         
-        // Submit via AJAX
+       
         const formData = new FormData(this);
         const submitBtn = $('#submitBtn');
         submitBtn.prop('disabled', true);
@@ -110,7 +107,7 @@ $(document).ready(function() {
         
         $.ajax({
             url: $(this).attr('action'),
-            type: 'POST', // Laravel's @method('PUT') will handle this
+            type: 'POST', 
             data: formData,
             processData: false,
             contentType: false,
@@ -119,7 +116,7 @@ $(document).ready(function() {
             },
             success: function(data) {
                 if (data.errors) {
-                    // Handle validation errors
+                  
                     $.each(data.errors, function(field, messages) {
                         const input = $('#' + field);
                         const errorElement = $('#' + field + '-error');
@@ -127,13 +124,13 @@ $(document).ready(function() {
                         errorElement.text(messages[0]);
                     });
                 } else if (data.success) {
-                    // Success - redirect or show success message
+                    
                     $('#formMessage').html('<div class="alert alert-success">Auction updated successfully! Redirecting...</div>');
                     setTimeout(function() {
                         window.location.href = data.redirect || '{{ route("products.show", $product) }}';
                     }, 1500);
                 } else {
-                    // Generic success without redirect data
+                    
                     $('#formMessage').html('<div class="alert alert-success">Auction updated successfully!</div>');
                 }
             },

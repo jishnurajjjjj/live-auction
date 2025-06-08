@@ -188,10 +188,8 @@ pusher.connection.bind('error', function(err) {
 });
 
 
-                // Subscribe to the product channel
                 const channel = pusher.subscribe('product.{{ $product->id }}');
 
-                // Handle bid form submission
                 $('#bid-form').submit(function(e) {
                     e.preventDefault();
                     
@@ -220,7 +218,7 @@ pusher.connection.bind('error', function(err) {
                     });
                 });
 
-                // Listen for new bids
+                
                 channel.bind('App\\Events\\BidPlaced', function(data) {
 
                      const currentPrice = parseFloat(data.product.current_price) || 0;
@@ -251,8 +249,7 @@ pusher.connection.bind('error', function(err) {
                 channel.bind('App\\Events\\AuctionEnded', function(data) {
                     $('#bid-form').hide();
                     $('#admin_bid_status').hide();
-                    console.log(data)
-                    // Show winner message
+                    
                   const winnerMessage = data.product.winner 
                     ? `Winner: ${data.product.winner.name} with ₹${parseFloat(data.product.winner.amount).toFixed(2)}`
                     : 'No bids were placed.';
@@ -279,7 +276,7 @@ pusher.connection.bind('error', function(err) {
                     $('#countdown').text('Auction has ended');
                 });
 
-                // Listen for new chat messages
+               
                channel.bind('App\\Events\\NewChatMessage', function(data) {
                         const isCurrentUser = data.message.user.id === currentUserId;
 
@@ -302,7 +299,7 @@ pusher.connection.bind('error', function(err) {
                     });
 
 
-                // Handle chat form submission
+               
                 $('#chat-form').submit(function(e) {
                     e.preventDefault();
                     const message = $('#chat-message').val().trim();

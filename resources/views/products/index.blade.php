@@ -76,7 +76,7 @@
         @foreach($products as $product)
             <div class="col-md-4 mb-4">
                 <div class="card product-card h-100 position-relative">
-                    <!-- Status Badge (Top Right) -->
+                   
                     <div class="position-absolute top-0 end-0 m-2">
                         @if($product->is_active)
                             <span class="badge bg-success rounded-pill px-3 py-2">
@@ -89,7 +89,7 @@
                         @endif
                     </div>
 
-                    <!-- Product Image -->
+                   
                     @if($product->image)
                         <img src="{{ asset('storage/'.$product->image) }}" 
                              class="card-img-top" 
@@ -102,7 +102,7 @@
                              alt="No image">
                     @endif
 
-                    <!-- Card Body -->
+                   
                     <div class="card-body">
                         <h5 class="card-title">{{ Str::limit($product->name, 25) }}</h5>
                         <p class="card-text text-muted">{{ Str::limit($product->description, 80) }}</p>
@@ -128,7 +128,7 @@
                         </div>
                     </div>
 
-                    <!-- Status Section (Bottom of Card) -->
+                   
                     <div class="card-footer bg-light border-0">
                         <div class="status-info bg-white p-3 rounded text-center">
                             @if($product->is_active)
@@ -163,7 +163,7 @@
                         </div>
                     </div>
 
-                    <!-- View Button -->
+               
                
 <div class="card-footer bg-white border-top">
     <a href="{{ route('products.show', $product) }}" class="btn btn-primary w-100">
