@@ -7,7 +7,7 @@
                 @if($product->image)
                     <img src="{{ asset('storage/'.$product->image) }}" class="card-img-top" alt="{{ $product->name }}">
                 @else
-                    <img src="{{ asset('storage/defult_product.avif') }}" class="card-img-top" alt="No image">
+                    <img src="{{ asset('storage/image/defult_product.avif') }}" class="card-img-top" alt="No image">
                 @endif
                 <div class="card-body">
                     <h2 class="card-title">{{ $product->name }}</h2>

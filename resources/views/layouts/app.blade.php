@@ -65,7 +65,7 @@
                             </li>
                         
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('products.create') }}">Add Product</a>
+                                <a class="nav-link" href="{{ route('products.create') }}">Add Auctions</a>
                             </li>
                         
                     @endcan
