@@ -64,3 +64,62 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+
+
+
+## 🧪 Live Auction Platform — Setup & Usage Guide
+
+This section explains how to set up and run the Live Auction platform built with Laravel.
+
+### 📥 Clone the Repository
+
+git clone https://github.com/jishnurajjjjj/live-auction.git
+cd live-auction
+
+## Install Dependencies
+
+composer install
+npm install
+npm run build
+
+## Environment Setup
+
+cp .env.example .env
+
+## Then set the following in your .env
+
+BROADCAST_DRIVER=pusher
+PUSHER_APP_ID=2004885
+PUSHER_APP_KEY=8b0f29faee870ef589e9
+PUSHER_APP_SECRET=10548e19664191acc316
+PUSHER_HOST=
+PUSHER_PORT=443
+PUSHER_SCHEME=https
+PUSHER_APP_CLUSTER=ap2
+
+##  Migrate and Seed Database
+
+php artisan migrate --seed
+
+## Generate App Key
+
+php artisan key:generate
+
+
+## Storage Symlink
+
+php artisan storage:link
+
+## Run Custom Artisan Command For Auction End Live Update
+
+php artisan auction:check-end-times
+
+##  Default Login Credentials
+
+| Role  | Email               | Password |
+| ----- | -------------------- -------- |
+| Admin | [admin@example.com] | admin123 |
+| User  | [john@example.com]  | password |
+
