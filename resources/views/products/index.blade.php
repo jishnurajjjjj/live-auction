@@ -96,7 +96,7 @@
                                style="height: 200px; object-fit: cover;"
                              alt="{{ $product->name }}">
                     @else
-                        <img src="{{ asset('storage/image/defult_product.avif') }}" 
+                        <img src="{{ asset('images/defult_product.avif') }}" 
                              class="card-img-top" 
                                style="height: 200px; object-fit: cover;"
                              alt="No image">

@@ -7,7 +7,7 @@
                 @if($product->image)
                     <img src="{{ asset('storage/'.$product->image) }}" class="card-img-top" alt="{{ $product->name }}">
                 @else
-                    <img src="{{ asset('storage/image/defult_product.avif') }}" class="card-img-top" alt="No image">
+                    <img src="{{ asset('images/defult_product.avif') }}" class="card-img-top" alt="No image">
                 @endif
                 <div class="card-body">
                     <h2 class="card-title">{{ $product->name }}</h2>
@@ -97,7 +97,7 @@
                     @foreach($product->bids as $bid)
                         <div class="d-flex justify-content-between mb-2 bid-item">
                             <div>
-                                <img src="{{ asset('storage/user.jpg') }}" width="30" height="30" class="rounded-circle me-2">
+                                <img src="{{ asset('images/user.jpg') }}" width="30" height="30" class="rounded-circle me-2">
                                 <strong>{{ $bid->user->name }}</strong>
                             </div>
                             <div>
@@ -141,7 +141,7 @@
                         @endphp
                         <div class="mb-2 chat-message d-flex {{ $isCurrentUser ? 'justify-content-end' : 'justify-content-start' }}">
                             <div class="d-flex {{ $isCurrentUser ? 'flex-row-reverse text-end' : '' }}">
-                                <img src="{{ asset('storage/user.jpg') }}" width="30" height="30" class="rounded-circle {{ $isCurrentUser ? 'ms-2' : 'me-2' }}">
+                                <img src="{{ asset('images/user.jpg') }}" width="30" height="30" class="rounded-circle {{ $isCurrentUser ? 'ms-2' : 'me-2' }}">
                                 <div>
                                     <strong>{{ $message->user->name }}</strong>
                                     <small class="text-muted ms-2">{{ $message->created_at->diffForHumans() }}</small>
@@ -229,7 +229,7 @@ pusher.connection.bind('error', function(err) {
                     const bidItem = `
                         <div class="d-flex justify-content-between mb-2 bid-item">
                             <div>
-                                <img src="{{ asset('storage/user.jpg') }}" width="30" height="30" class="rounded-circle me-2">
+                                <img src="{{ asset('images/user.jpg') }}" width="30" height="30" class="rounded-circle me-2">
                                 <strong>${data.bid.user.name}</strong>
                             </div>
                             <div>
@@ -283,7 +283,7 @@ pusher.connection.bind('error', function(err) {
                         const messageDiv = `
                             <div class="mb-2 chat-message d-flex ${isCurrentUser ? 'justify-content-end' : 'justify-content-start'}">
                                 <div class="d-flex ${isCurrentUser ? 'flex-row-reverse text-end' : ''}">
-                                    <img src="/storage/user.jpg" width="30" height="30" class="rounded-circle ${isCurrentUser ? 'ms-2' : 'me-2'}">
+                                    <img src="{{ asset('images/user.jpg') }}" width="30" height="30" class="rounded-circle ${isCurrentUser ? 'ms-2' : 'me-2'}">
                                     <div>
                                         <strong>${data.message.user.name}</strong>
                                         <small class="text-muted ms-2">just now</small>
