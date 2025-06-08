@@ -76,7 +76,7 @@
                         @if(auth()->user()->id === $product->user_id)
                             <div class="mt-3">
                                 @if($product->is_active)
-                                <a href="{{ route('products.edit', $product) }}" class="btn btn-secondary">Edit</a>
+                                <a href="{{ route('products.edit', $product) }}" class="btn btn-secondary" id="edit-auc-button">Edit</a>
                                 @endif
                                 <form action="{{ route('products.destroy', $product) }}" method="POST" class="d-inline delete-form">
                                     @csrf
@@ -272,7 +272,7 @@ pusher.connection.bind('error', function(err) {
                     } else {
                         $('.alert.alert-warning').html(`This auction has ended. <span id="winner-message">${winnerMessage}</span>`);
                     }
-                    
+                     $('#edit-auc-button').hide();
                     $('#countdown').text('Auction has ended');
                 });
 

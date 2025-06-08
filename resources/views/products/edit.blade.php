@@ -26,7 +26,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="starting_price" class="form-label">Starting Price</label>
-                            <input type="number" class="form-control" id="starting_price" name="starting_price" min="0" step="0.01" value="{{ $product->starting_price }}" required>
+                            <input type="number" class="form-control" id="starting_price" name="starting_price" min="0" step="0.01" value="{{ $product->starting_price }}"  disabled>
                             <div class="invalid-feedback" id="starting_price-error"></div>
                         </div>
                         <div class="mb-3">

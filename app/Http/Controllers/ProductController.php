@@ -107,23 +107,24 @@ class ProductController extends Controller
 
     public function edit(Product $product)
     {
-        if (!Auth::user()->isAdmin() || $product->user_id !== Auth::id()) {
+       if (!Auth::user()->isAdmin() || $product->user_id !== Auth::id() || $product->trashed()||$product->is_active == 0 ) {
             abort(403, 'Unauthorized action.');
         }
+
 
         return view('products.edit', compact('product'));
     }
 
     public function update(Request $request, Product $product)
     {
-        if (!Auth::user()->isAdmin() || $product->user_id !== Auth::id()) {
+        if (!Auth::user()->isAdmin() || $product->user_id !== Auth::id() || $product->trashed()||$product->is_active == 0 ) {
             abort(403, 'Unauthorized action.');
         }
 
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string',
-            'starting_price' => 'required|numeric|min:0',
+            // 'starting_price' => 'required|numeric|min:0',
             'auction_end_time' => 'required|date|after:now +5 minutes',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'youtube_live_url' => 'nullable',
@@ -140,7 +141,7 @@ class ProductController extends Controller
         $product->update([
             'name' => $validated['name'],
             'description' => $validated['description'],
-            'starting_price' => $validated['starting_price'],
+            // 'starting_price' => $validated['starting_price'],
             'auction_end_time' => $validated['auction_end_time'],
              'youtube_live_url' => $validated['youtube_live_url'],
             'image' => $imagePath,
